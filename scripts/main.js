@@ -3,7 +3,7 @@
   var App = window.App;
   var DETAIL_IMAGE_SELECTOR = "[data-image-role='displayImage']";
   var THUMBNAIL_LINK_SELECTOR = "[data-image-role='trigger']";
-  var SERVER_URL = "http://localhost:2404/coffeeorders";
+  var SERVER_URL = "http://localhost:2403/";
   var RemoteDataStore = App.RemoteDataStore;
   var remoteDS = new RemoteDataStore(SERVER_URL);
   var imageArray = [];
