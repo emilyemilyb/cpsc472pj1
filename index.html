@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
   <!-- Bootstrap css href -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-  
+
   <link rel="stylesheet" href="stylesheets/styles.css">
-  
-  
-    <!-- Emoji reference -->
+
+
+  <!-- Emoji reference -->
   <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
   <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
@@ -35,61 +35,58 @@
 
 <body>
   <header class="main-header">
-   <h1> <i class="em em-heart_eyes"></i>
-   Food Wars 
+    <h1> <i class="em em-heart_eyes"></i>
+   Food Wars
    <i class="em em-face_with_open_mouth_vomiting"></i></h1>
   </header>
-  
+
   <main class="main-content">
-
-    <!-- Html for the central large food image -->
-    <div class="detail-image-container">
-      <!-- Javascript button to change detail image to previous food picture -->
-      <!-- TODO connect data-previous-button to a javascript function -->
-      <a href="#" class="previous round" data-previous-button="trigger" onclick="previous()">&#8249;</a>
-      <div class="detail-image-frame">
-        <!-- TODO Find some food images -->
-        <img class="detail-image" src="img/Spaghetti.jpg" alt="" data-image-role="displayImage">
+      <!-- Html for the central large food image -->
+      <div class="detail-image-container">
+        <!-- Javascript button to change detail image to previous food picture -->
+        <!-- TODO connect data-previous-button to a javascript function -->
+        <a href="#" class="previous round" data-previous-button="trigger" onclick="previous();">&#8249;</a>
+        <div class="detail-image-frame">
+          <!-- TODO Find some food images -->
+          <img class="detail-image" src="img/Spaghetti.jpg" alt="" data-image-role="displayImage" id="mainImage">
+        </div>
+        <!-- Javascript button to change detail image to previous food picture -->
+        <!-- TODO connect data-next-button to a javascript function -->
+        <a href="#" class="next round" data-next-button="trigger" onclick="next();">&#8250;</a>
       </div>
-      <!-- Javascript button to change detail image to previous food picture -->
-      <!-- TODO connect data-next-button to a javascript function -->
-      <a href="#" class="next round" data-next-button="trigger" onclick="next()">&#8250;</a>
-    </div>
 
-    <hr>
-    <section>
-      <!-- Adding comments implemented as a form -->
-      <div class="comments-section">
-        <!-- These div tags are for working with boot strap to stylesheet
+      <hr>
+      <section>
+        <!-- Adding comments implemented as a form -->
+        <div class="comments-section">
+          <!-- These div tags are for working with boot strap to stylesheet
         the comment form -->
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <form add-comment-form="form">
-              <div class="form-group">
-                <label for="addComment">Add Comment</label>
-                <input class="form-control" name="comment" id="addComment" autofocus placeholder="Time to ragepost!">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form add-comment-form="form">
+                <div class="form-group">
+                  <label for="addComment">Add Comment</label>
+                  <input class="form-control" name="comment" id="addComment" autofocus placeholder="Time to ragepost!">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!--TODO Modify the comments section.
+        <!--TODO Modify the comments section.
       The comments section below is the skeleton code from Chapter 11 -->
-      <div class="panel panel-body">
-        <div class="panel-body">
-          <h4>Comments Section:</h4>
-          <div data-comments-section="checklist">
+        <div class="panel panel-body">
+          <div class="panel-body">
+            <h4>Comments Section:</h4>
+            <div data-comments-section="checklist">
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
   </main>
-  <!-- TODO Add javascript files here
+  <!-- TODO Add javascript files here-->
   <script src="scripts/main.js" charset="utf-8"></script>
-  -->
 </body>
 
 </html>
