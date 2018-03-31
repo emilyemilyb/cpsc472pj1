@@ -20,8 +20,8 @@
 
   RemoteDataStore.prototype.addImage = function(key, file) {
     $.ajax(this.fileUrl, {
-      type: "POST"
-      contentType: "multipart/form-data"
+      type: "POST",
+      contentType: "multipart/form-data",
       data: file
     });
   };
