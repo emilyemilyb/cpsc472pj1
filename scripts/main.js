@@ -1,17 +1,17 @@
 (function(window) {
   "use strict"
+  var App = window.App;
   var DETAIL_IMAGE_SELECTOR = "[data-image-role='displayImage']";
   var THUMBNAIL_LINK_SELECTOR = "[data-image-role='trigger']";
+  var FORM_SELECTOR_FOODWAR = "[data-foodwar='form']";
+  var FormHandler = App.FormHandler;
+  var formHandler = new FormHandler(FORM_SELECTOR_FOODWAR);
   //<<<<<<< HEAD
-  var App = window.App;
+
   var SERVER_URL = "http://localhost:2403/";
   var RemoteDataStore = App.RemoteDataStore;
   var remoteDS = new RemoteDataStore(SERVER_URL);
-  //=======
-  var SERVER_URL = "http://localhost:2404/coffeeorders";
-  //var RemoteDataStore = App.RemoteDataStore;
-  //  var remoteDS = new RemoteDataStore(SERVER_URL);
-  //>>>>>>> ca4e65b239f409cf54b4e0636239e97575aa05ce
+
   var imageArray = [];
 
   /*  remoteDS.getAll(function(data) {
