@@ -58,17 +58,19 @@
     return imageArray;
   }
 
-  FormHandler.prototype.addPreviousHandler = function(fn) {
+  FormHandler.prototype.addPreviousHandler = function(index, imageArray) {
     /*eslint no-console: ["error", { allow: ["warn", "error","log"] }] */
-    console.log("Setting submit handler for form");
+    console.log("Setting previous handler for form");
     this.$formElement.on("previous", function(event) {
+      console.log(index);
       event.preventDefault();
       var data = {};
       $(this).serializeArray().forEach(function(item) {
-        imageArray = getThumbnailsArray();
-        var prevImage = (getCurrentImageIndex() - 1 + thumbnailArray.length) % thumbnailArray.length;
+        //imageArray = getThumbnailsArray();
+        var prevImage = (index - 1 + imageArray.length) % imageArray.length;
         //setDetails(imageFromThumb(imageArray[prevImage]));
-        data[item.name] = item.value;
+        //data[item.name] = item.value;
+        console.log(index);
         $("#mainImage").src = prevImage;
         //console.log(item.name + " is " + item.value);
       });
@@ -78,6 +80,30 @@
       this.elements[0].focus();
     });
   };
+
+  FormHandler.prototype.addNextHandler = function(index, imageArray) {
+    /*eslint no-console: ["error", { allow: ["warn", "error","log"] }] */
+    console.log("Setting next handler for form");
+    this.$formElement.on("next", function(event) {
+      console.log(index);
+      event.preventDefault();
+      var data = {};
+      $(this).serializeArray().forEach(function(item) {
+        //imageArray = getThumbnailsArray();
+        var nextImage = (index() + 1) % thumbnailArray.length;
+        //setDetails(imageFromThumb(imageArray[prevImage]));
+        //data[item.name] = item.value;
+        console.log(index);
+        $("#mainImage").src = nextImage;
+        //console.log(item.name + " is " + item.value);
+      });
+      console.log(data);
+      fn(data);
+      this.reset();
+      this.elements[0].focus();
+    });
+  };
+
 
   App.FormHandler = FormHandler;
   window.App = App;
