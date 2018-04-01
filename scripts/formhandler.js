@@ -71,7 +71,9 @@
         //setDetails(imageFromThumb(imageArray[prevImage]));
         //data[item.name] = item.value;
         console.log(index);
-        $("#mainImage").src = prevImage;
+        var imageElement = document.createElement('img');
+        imageElement.setAttribute('src', imageArray[prevImage]);
+        $("#mainImage").src = imageElement.src;
         //console.log(item.name + " is " + item.value);
       });
       console.log(data);
@@ -94,7 +96,9 @@
         //setDetails(imageFromThumb(imageArray[prevImage]));
         //data[item.name] = item.value;
         console.log(index);
-        $("#mainImage").src = nextImage;
+        var imageElement = document.createElement('img');
+        imageElement.setAttribute('src', imageArray[nextImage]);
+        $("#mainImage").src = imageElement.src;
         //console.log(item.name + " is " + item.value);
       });
       console.log(data);
