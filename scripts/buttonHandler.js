@@ -1,34 +1,34 @@
 var imageArray = [];
 var DETAIL_IMAGE_SELECTOR = "[data-image-role='displayImage']";
+
 function getRemoteData(){
-  window.remoteDS.getAllImages(function(data) {
+  /*window.remoteDS.getAllImages(function(data) {
     for (var i = 0; i < data.length; i++) {
       imageArray[i] = data[i];
     }
-  });
+  });*/
+  imageArray[0]="img/Spaghetti.jpg";
+  imageArray[1]="img/Taco.jpg";
+  imageArray[2]="img/Breakfast.jpg";
+  imageArray[3]="img/Hamburger.jpg";
+  imageArray[4]="img/Ramen.jpg";
+
   return imageArray;
 }
-/*
-imageArray[0]="img/Spaghetti.jpg";
-imageArray[1]="img/Taco.jpg";
-imageArray[2]="img/Breakfast.jpg";
-imageArray[3]="img/Hamburger.jpg";
-imageArray[4]="img/Ramen.jpg";
-*/
+
 function setDetails(imageElement) {
   "use strict";
   var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-  var imageElement = document.createElement('img');
-  imageElement.setAttribute('src', imageArray[image]);
-  detailImage.setAttribute("src", imageElement.src);
+  //var imageElement = document.createElement('img');
+  //imageElement.setAttribute('src', imageArray[image]);
+  detailImage.setAttribute("src", imageElement);
 }
 
 function getCurrentImageIndex() {
   imageArray = getRemoteData();
   var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
   for (var i = 0; i < imageArray.length; i++) {
-    //if (imageArray[i].getAttribute("data-image-url") == detailImage.getAttribute("src")) {
-    if (imageArray[i].text == detailImage.getAttribute("src")) {
+    if (imageArray[i] == detailImage.getAttribute("src")) {
       return i;
     }
   }
