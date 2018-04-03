@@ -19,3 +19,8 @@ People who take pictures of their food can argue about whose food looks tastier
 ## Installing
 
 Please refer to the [Installation Documentation](INSTALL.md) for instructions on how to install the program.
+
+
+## Using the application
+
+For instructions on how to use the application, please refer to the [Usage Documentation](USING.md)
