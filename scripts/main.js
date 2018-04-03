@@ -1,39 +1,27 @@
-(function(window) {
-  "use strict"
+(function (window) {
+  'use strict';
+  var FORM_SELECTOR = '[data-coffee-order="form"]';
+  var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]';
+//  var SERVER_URL = 'http://coffeerun-v2-rest-api.herokuapp.com/api/coffeeorders';
+ var SERVER_URL = 'http://localhost:2403/comments';
   var App = window.App;
-  var FORM_SELECTOR_IMAGES = "[data-payment='form']";
-  var SERVER_URL = "http://localhost:2404/foodwars";
+  var Truck = App.Truck;
+  var DataStore = App.DataStore;
   var RemoteDataStore = App.RemoteDataStore;
-  var remoteDS = new RemoteDataStore(SERVER_URL);
-  var THUMBNAIL_LINK_SELECTOR = "[data-image-role='trigger']";
-  var FORM_SELECTOR_FOODWAR = "[data-foodwar='form']";
   var FormHandler = App.FormHandler;
-  var formHandler = new FormHandler(FORM_SELECTOR_FOODWAR);
+  var CheckList = App.CheckList;
+  var remoteDS = new RemoteDataStore(SERVER_URL);
+  var myTruck = new Truck('ncc-1701', remoteDS);
+  window.myTruck = myTruck;
+  var checkList = new CheckList(CHECKLIST_SELECTOR);
+  checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
+  var formHandler = new FormHandler(FORM_SELECTOR);
+
+// var UpVotesHandler = App.UpVotesHandler;
+ //var upVotes = new UpVotesHandler(RemoteDataStore);
+
+var THUMBNAIL_LINK_SELECTOR = "[data-image-role='trigger']";
   var imageArray = [];
-  //const fs = require('fs');
- window.remoteDS = remoteDS;
-
-  var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-  window.detailImage = detailImage;
-
-/*remoteDS.getAllImages(function(data) {
-    for (var i = 0; i < data.length; i++) {
-      imageArray[i] = data[i];
-
-    if(imageArray!= null){
-        for (var i = 0; i < imageArray.length; i++) {
-          var imgCanvas = document.createElement("canvas"),
-           imgContext = imgCanvas.getContext("2d");
-           imgCanvas.width = imageArray[i].width;
-           imgCanvas.height = imageArray[i].height;
-           imageArray[i].crossOrigin = "Anonymous";
-           imgContext.drawImage(imageArray[i], 0, 0, imageArray[i].width, imageArray[i].height);
-           var imgAsDataURL = imgCanvas.toDataURL("img");
-           localStorage.setItem("elephant", imgAsDataURL);
-        }
-    }
-    }
-  });*/
 
 imageArray[0]="img/Spaghetti.jpg";
 imageArray[1]="img/Taco.jpg";
@@ -42,5 +30,9 @@ imageArray[3]="img/Hamburger.jpg";
 imageArray[4]="img/Ramen.jpg";
 
 
-  
+  formHandler.addSubmitHandler(function (data) {
+    myTruck.createOrder(data);
+    checkList.addRow(data);
+  });
+  console.log(formHandler);
 })(window);

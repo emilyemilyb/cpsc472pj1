@@ -3,72 +3,129 @@
   var App = window.App || {};
   var $ = window.jQuery;
 
+  //constructor
   function RemoteDataStore(url) {
     if (!url) {
       throw new Error("No remote URL supplied.");
     }
-    this.serverUrl = url + "/comments";
-    this.fileUrl = url + "/upload";
-    //this.getAll();
+    this.serverUrl = url;
   }
 
+  //add a new order
   RemoteDataStore.prototype.add = function(key, val) {
-    $.post(this.serverUrl, val, function(serverResponse) {
+    /*$.post(this.serverUrl, val, function(serverResponse) {
       console.log(serverResponse);
-    });
-  };
+    });*/
 
-  RemoteDataStore.prototype.addImage = function(key, file) {
-    $.ajax(this.fileUrl, {
+    $.ajax(this.serverUrl, {
       type: "POST",
-      contentType: "multipart/form-data",
-      data: file
+      contentType: "application/json",
+      data: JSON.stringify({
+        "coffee": val.coffee,
+        "emailAddress": val.emailAddress,
+        "id": val.id
+      }),
+      success: function(serverResponse) {
+        console.log(serverResponse);
+      },
+      error: function(xhr) {
+        alert(xhr.responseText);
+      }
     });
   };
 
-  // NOTE: GET key is the image file name for which the comments belong.
-  RemoteDataStore.prototype.getAll = function(key, cb) {
-    $.get(this.serverUrl + "?image=" + key, function(serverResponse) {
+  // get all pending orders
+  RemoteDataStore.prototype.getAll = function(cb) {
+    /*$.get(this.serverUrl, function(serverResponse) {
       console.log(serverResponse);
       cb(serverResponse);
+    });*/
+
+    $.ajax(this.serverUrl, {
+      type: "GET",
+      success: function(serverResponse) {
+        console.log(serverResponse);
+        cb(serverResponse);
+      },
+      error: function(xhr) {
+        alert(xhr.responseText);
+      }
     });
   };
 
-  RemoteDataStore.prototype.getAllImages = function(cb) {
-    dpd.fileupload.get(function(result, err) {
-      console.log(result);
-      cb(result);
-    });
-  };
-
-  // NOTE: GET key is the unique id in the collection.
+  //get an order with key=emailAddress
   RemoteDataStore.prototype.get = function(key, cb) {
-    $.get(this.serverUrl + "/" + key, function(serverResponse) {
+    /*$.get(this.serverUrl + "/" + key, function(serverResponse) {
       console.log(serverResponse);
       cb(serverResponse);
+    });*/
+
+    $.ajax({
+      method: "GET",
+      url: this.serverUrl,
+      success: function(serverResponse) {
+        console.log(serverResponse);
+
+        //get id from emailAddress
+        var id = null, i = 0, l = serverResponse.length;
+        while (id == null && i < l){
+          if (serverResponse[i].emailAddress == key) {
+            id = serverResponse[i].id;
+          }
+          i++;
+        }
+
+        console.log(id);
+
+        $.ajax({
+          method: "GET",
+          url: this.url + "/" + id,
+          success: function(serverResponse) {
+            console.log(this.url);
+            console.log(serverResponse);
+            cb(serverResponse);
+          },
+          error: function(xhr) {
+            alert(xhr.responseText);
+          }
+        });
+      },
     });
   };
 
-  // NOTE: GET key is the image file name.
-  RemoteDataStore.prototype.getImage = function(key, cb) {
-    $.get(this.fileUrl + "/" + key, function(serverResponse) {
-      console.log(serverResponse);
-      cb(serverResponse);
-    });
-  };
-
-  // NOTE: DELETE key is the unique id in the collection.
   RemoteDataStore.prototype.remove = function(key) {
-    $.ajax(this.serverUrl + "/" + key, {
+    /*$.ajax(this.serverUrl + "/" + key, {
       type: "DELETE"
-    });
-  };
+    });*/
 
-  // NOTE: DELETE key is the unique id of the file.
-  RemoteDataStore.prototype.removeImage = function(key) {
-    dpd.fileupload.del(key, function(result, err) {
-      if (err) alert(err);
-      console.log(result);
+    $.ajax({
+      method: "GET",
+      url: this.serverUrl,
+      success: function(serverResponse) {
+        console.log(serverResponse);
+
+        //get id from emailAddress
+        var id = null, i = 0, l = serverResponse.length;
+        while (id == null && i < l){
+          if (serverResponse[i].emailAddress == key) {
+            id = serverResponse[i].id;
+          }
+          i++;
+        }
+        console.log(id);
+        $.ajax({
+          method: "DELETE",
+          url: this.url + "/" + id,
+          success: function(serverResponse) {
+            console.log(this.url);
+            console.log(serverResponse);
+            console.log("delete item " + id);
+          },
+          error: function(xhr) {
+            alert(xhr.responseText);
+          }
+        });
+      },
     });
   };
 
