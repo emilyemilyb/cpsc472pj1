@@ -1,3 +1,8 @@
+/* The style sheet file for this project is a unique design layout that changes the webpage display
+from a simple html page to a more colorful layout. Changes made to the original html content include
+size, color, padding, borderlines, image position, and other various classes that have been modified.
+The CSS file focuses on giving the end user an appealing design to look at.    */
+
 body {
   height: 100%;
   display: flex;
@@ -6,7 +11,8 @@ body {
   background: rgba(108, 214, 214,1);
 }
 
-.main-header {
+   /* design layout for the project title food wars */
+.main-header {	
 	flex: 0 1 auto;
 	color: red;
 	font-family: fantasy;
@@ -14,14 +20,14 @@ body {
 	font-style: normal;
 	font-weight: 200;
 	text-decoration: underline overline wavy red;
-
+	
 	display: flex;
 	justify-content: center;
 	padding-bottom: 50px;
-
+  
 }
 
-
+/* General layout for food image, next/prev buttons, username,comment section, and food rating*/  
 .main-content {
   flex: 1 1 auto;
   display: flex;
@@ -29,7 +35,7 @@ body {
 }
 
 
-
+/* food image box layout */
 .detail-image-container {
   flex: 1 1 auto;
   display: flex;
@@ -37,25 +43,28 @@ body {
   align-items: center;
 }
 
+/* "a" tag for size and color for next/prev buttons */
 a {
 	color: red;
   font-size: 100px;
    text-decoration: none;
 }
 
+/* food image frame layout  */
 .detail-image-frame {
   position: relative;
   text-align: center;
-
+    
 }
 
+/* food image size for making adjustments to width(or height) */
 .detail-image {
   width: 55%;
    border:10px solid orange;
-
+   
 }
 
-
+/* panel for image,comment box,   */
 .panel-default{
 	padding-bottom: 1px;
 	background-color: #afeeee;
@@ -64,7 +73,7 @@ a {
 
 
 label {
-
+	
 	color: red;
 	padding-bottom: 10px;
 }

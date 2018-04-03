@@ -1,54 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <title>coffeerun</title>
+  <meta charset="utf-8">
+  <title>Food Wars</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <!-- Bootstrap css href -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-  <style>
-    form :focus:required:invalid {
-      border-color: #a94442;
-    }
-  </style>
+
   <link rel="stylesheet" href="stylesheets/styles.css">
 
 
   <!-- Emoji reference -->
-<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
-<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png" data-image-role="trigger">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" data-image-role="trigger">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" data-image-role="trigger">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" data-image-role="trigger">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png" data-image-role="trigger">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" data-image-role="trigger">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" data-image-role="trigger">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" data-image-role="trigger">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
-
-
-<body class="container">
+<body>
   <header class="main-header">
     <h1> <i class="em em-heart_eyes"></i>
    Food Wars
    <i class="em em-face_with_open_mouth_vomiting"></i></h1>
   </header>
-<h4> What do you think of the food? Comment below! </h4>
-  <section>
-    <div class="panel panel-default">
-      <div class="panel-body">
-<span class="detail-image-title" data-image-role="title"><h1><i>Spaghetti</i></h1></span>
-        <div class="detail-image-container">
+
+  <main class="main-content">
+    <form data-foodwar="form" id="foodDetails">
+      <!-- Html for the central large food image -->
+      <div class="detail-image-container">
         <!-- Javascript button to change detail image to previous food picture -->
         <!-- TODO connect data-previous-button to a javascript function -->
         <a href="#" class="previous round" data-previous-button="trigger" onclick="previous();">&#8249;</a>
@@ -61,50 +56,44 @@
 
         <a href="#" class="next round" data-next-button="trigger" onclick="next();">&#8250;</a>
       </div>
-<h3> Total Score: 4</h3>
 
-
-        <form data-coffee-order="form">
-          <div class="form-group">
-            <label for="coffeeOrder">Username</label>
-            <input class="form-control" name="coffee" id="coffeeOrder" autofocus required pattern="[a-zA-Z\s]+">
-          </div>
-          <div class="form-group">
-            <label for="emailInput">Comment</label>
-            <!--
-              <input class="form-control" type = "text" name="emailAddress" id="emailInput" value="" placeholder="Time to Ragepost!" required>
--->
-            <div>
-              <textarea class="form-control" name="emailAddress" id="emailInput" placeholder="Time to Ragepost!"></textarea>
+      <hr>
+      <section>
+        <!-- Adding comments implemented as a form -->
+        <div class="comments-section">
+          <!-- These div tags are for working with boot strap to stylesheet
+        the comment form -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form add-comment-form="form">
+                <div class="form-group">
+                  <label for="addComment">Add Comment</label>
+                  <input class="form-control" name="comment" id="addComment" autofocus placeholder="Time to ragepost!">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
             </div>
           </div>
-          <label for="ratingLevel" id="ratingLabel">Food Rating: </label><output for="ratingLevel" id="ratingOutput">5</output>
-        <input name="rating" id="ratingLevel" type="range" min="1" max="10" value="5">
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h4>Comments:</h4>
-        <div data-coffee-order="checklist">
         </div>
-      </div>
-    </div>
 
-  </section>
+        <!--TODO Modify the comments section.
+      The comments section below is the skeleton code from Chapter 11 -->
+        <div class="panel panel-body">
+          <div class="panel-body">
+            <h4>Comments Section:</h4>
+            <div data-comments-section="checklist">
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+  </main>
+  <!-- TODO Add javascript files here-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
   <script src="scripts/buttonHandler.js" charset="utf-8"></script>
-  <script src="scripts/checklist.js" charset="utf-8"></script>
   <script src="scripts/formhandler.js" charset="utf-8"></script>
   <script src="scripts/remotedatastore.js" charset="utf-8"></script>
-  <script src="scripts/datastore.js" charset="utf-8"></script>
-  <script src="scripts/truck.js" charset="utf-8"></script>
   <script src="scripts/main.js" charset="utf-8"></script>
-
-  <script src="scripts/commentBox.js" charset="utf-8"></script>
-  <script src="scripts/vote.js" charset="utf-8"></script>
 </body>
 
 </html>
