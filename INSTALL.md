@@ -12,7 +12,7 @@ Type in this command:
 
 To configure the port, type in:
 
-> json-server--port=<port number> --watch db.json
+> json-server--port=\<port number\> --watch db.json
   
 ## Install Browser-sync
 
