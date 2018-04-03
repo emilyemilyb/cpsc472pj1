@@ -15,3 +15,7 @@ Use client-side JavaScript, Ajax, and Deployd to build one of the applications l
 
 Build a site where...
 People who take pictures of their food can argue about whose food looks tastier
+
+## Installing
+
+Please refer to the [Installation Documentation](INSTALL.md) for instructions on how to install the program.
